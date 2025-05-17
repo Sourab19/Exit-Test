@@ -10,6 +10,14 @@ require("./db/connection");
 const basicRoute = require("./routes/emailRoutes");
 app.use("/email", basicRoute);
 
+app.use(
+  cors({
+    origin: ['https://exit-test-wnau.vercel.app'],
+    credentials: true,
+    methods: ["GET", "POST"],
+    allowedHeaders: ['Content-Type'],
+  })
+);
 app.get("/", (req, res) => {
   res.send("API is running");
 });

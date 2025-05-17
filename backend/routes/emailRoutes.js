@@ -16,15 +16,11 @@ const transporter = nodemailer.createTransport({
 });
 router.post("/send", async (req, res) => {
   const { email } = req.body;
-
-  
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
   try {
 
     await emailModel.create({ email, otp });
-
-
     await transporter.sendMail({
       to: email,
       subject: "OTP ",
@@ -44,7 +40,6 @@ router.post("/verify", async (req, res) => {
 
   try {
     const record = await emailModel.findOne({ email, otp });
-
     if (record) {
       return res.status(200).json({ message: "Email Logged in Successfully " });
     } else {
