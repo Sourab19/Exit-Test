@@ -17,7 +17,7 @@ const OtpPage = () => {
     const emailData = { email, otp };
 
     axios
-      .post("http://localhost:3000/email/verify", emailData)
+      .post("https://exit-test.vercel.app/email/verify", emailData)
       .then((res) => {
         alert(res.data.message);
         navigate("/welcome");

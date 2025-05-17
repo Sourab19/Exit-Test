@@ -16,7 +16,7 @@ const EmailPage = () => {
     const emailData = { email };
 
     axios
-      .post("http://localhost:3000/email/send", emailData)
+      .post("https://exit-test.vercel.app/email/send", emailData)
       .then((res) => {
         alert(res.data.message);
         navigate("/otp");
